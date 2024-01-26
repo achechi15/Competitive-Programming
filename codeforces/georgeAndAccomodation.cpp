@@ -6,7 +6,6 @@ int main()
 {
     int rooms = 0;
     int t; cin >> t;
-
     for (int i = 0; i < t; i++)
     {
         int people, capacity; cin >> people >> capacity;
