@@ -20,10 +20,47 @@ int main() {
         }
         if (sumRow != 45 || sumCol != 45) flag = false;
         for (int k = 1; k <= 9; k++) {
-            if (row.count(k) == 0 || column.count(k) == 0) flag = false;
+            if (row.size() != 9 || column.size() != 9) flag = false;
         }
         row.clear(); column.clear();
     }
+    
+    for (int i = 0; i < 9; i+=3) {
+        set<int> box;
+        for (int j = i; j < i+3; j++) {
+            for (int k = 0; k < 3; k++) {
+                // cout << s[j][k] << " ";
+                box.insert(s[j][k]-'0');
+            }
+            // cout << endl;
+        }
+        // cout << endl;
+        if (box.size() != 9) flag = false;
+    }
+    for (int i = 0; i < 9; i+=3) {
+        set<int> box;
+        for (int j = i; j < i+3; j++) {
+            for (int k = 3; k < 6; k++) {
+                // cout << s[j][k] << " ";
+                box.insert(s[j][k]-'0');
+            }
+            // cout << endl;
+        }
+        //cout << endl;
+        if (box.size() != 9) flag = false;
+    }
+    for (int i = 0; i < 9; i+=3) {
+        set<int> box;
+        for (int j = i; j < i+3; j++) {
+            for (int k = 6; k < 9; k++) {
+                //cout << s[j][k] << " ";
+                box.insert(s[j][k]-'0');
+            }
+            //cout << endl;
+        }
+        //cout << endl;
+        if (box.size() != 9) flag = false;
+    } 
     if(flag) cout << "Si" << endl;
     else cout << "No" << endl;
     return 0;
