@@ -11,6 +11,15 @@ int main() {
             int aux; cin >> aux;
             sum += aux;
         }
+        sum = sqrt(sum);
+        int entero = sum;
+        // cout << entero << endl;
+        // cout << (double) entero << endl;
+        sum = sum - (double)entero;
+        if (sum != 0.0) {
+            cout << "NO" << endl;
+        }
+        else cout << "YES" << endl;
     }
     return 0;
 }
