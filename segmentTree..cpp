@@ -1,7 +1,9 @@
 #include <bits/stdc++.h> 
 using namespace std;
+#define NMAX 1<<17;
 
-int segmentTree[10000];
+
+int segmentTree[NMAX];
 
 // !IMPORTANT: This is the function that builds the segment tree
 void build(int input[], int low, int high, int pos) {
@@ -33,6 +35,9 @@ int rangeMinQuery(int qLow, int qHigh, int low, int high, int pos) {
                 rangeMinQuery(qLow, qHigh, mid+1, high, pos*2+1));
 }
 
+void update(int value, int high, int low, int pos, int v) {
+    if (v == ) 
+}
 
 int main() {
     
