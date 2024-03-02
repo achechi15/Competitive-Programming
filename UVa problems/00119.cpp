@@ -3,8 +3,11 @@
         using namespace std;
 
         int main() {
+            bool first = true;
             int n;
             while (cin >> n) {
+                if (!first) cout << endl;
+                first = false;
                 /*
                 string names[n];
                 int money[n] {};
@@ -27,7 +30,7 @@
                     mapa.insert(pair<string, int>(names[i], 0));
                 }
                 for (int i = 0; i < n; i++) {
-                    cout << i << " -> " << n << endl;
+                    // cout << i << " -> " << n << endl;
                     string name; cin >> name;
                     int money, nTimes; cin >> money >> nTimes;
                     // cout << "xD" << endl;
@@ -45,6 +48,7 @@
                 for (int i = 0; i < n; i++) {
                     cout << names[i] << " " << mapa[names[i]] << endl;
                 }
+                
             }
             return 0;
         }

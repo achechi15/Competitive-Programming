@@ -9,8 +9,8 @@ int main() {
         int arr[n];
         for (int i = 0; i < n; i++) cin >> arr[i];
         sort(arr, arr+n);
-        int a = arr[0], b = arr[1], c = arr[n-1], d = arr[n-2];
-        cout << abs(a-b)+abs(b-c)+abs(c-d)+abs(a-d) << endl;
+        int min1 = arr[0], min2 = arr[1], max1 = arr[n-1], max2 = arr[n-2];
+        cout << abs(max1-min1)+abs(max2-min2)+abs(min1-max2)+abs(min2-min1) << endl;
     }
     return 0;
 }
