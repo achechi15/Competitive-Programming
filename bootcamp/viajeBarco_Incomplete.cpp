@@ -14,15 +14,19 @@ int main() {
     }
     sort(barcos, barcos+n);
     sort(personas, personas+m);
-    int carried = 0;
+    int carriedAscendent = 0;
     int j = n-1;
     for (int i = m-1; i >= 0; i--) {
-        if (personas[i] <= barcos[j]) {
-            carried += personas[i]; j--;
+        while (personas[i] > barcos[j]) {
+            j--;
             if (j < 0) break;
         }
+        if (j < 0) break;
+        carriedAscendent += personas[i];
+        
         // continue;
     }
-    cout << carried << endl;
+
+    cout << carriedAscendent << endl;
     return 0;
 }
