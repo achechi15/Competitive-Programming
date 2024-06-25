@@ -2,7 +2,7 @@
 
 using namespace std;
 
-bool punto_en_poligono(float px, float py, float x[], float y[], int n) {
+bool punto_en_poligono(double px, double py, double x[], double y[], int n) {
     int crossing = 0;
     for (int i = 0; i < n; i++) {
         // The first condition is to check if the point is in the segment
@@ -11,34 +11,35 @@ bool punto_en_poligono(float px, float py, float x[], float y[], int n) {
             // There are 3 scenarios:
             // If both of the y points are less than the py
             if (y[i] < py && y[(i+1)%n] < py) continue;
-            else if (y[i] >= py && y[(i+1)%n] >= py) crossing++;
+            else if (y[i] > py && y[(i+1)%n] > py) crossing++;
             else {
-                float dx, dy;
+                double dx, dy;
                 // The equation of the pendent regular
                 if (x[i] < x[(i+1)%n]) {
                     dx = x[(i+1)%n] - x[i];
                     dy = y[(i+1)%n] - y[i];
                 }
+                else if (x[i] == x[(i+1)%n]) {
+                    if ((y[i] <= py  && y[(i+1)%n] > py) || (y[i]>= py && x[(i+1)%n] < py )) return true;
+                }
                 // The equation of the pendent if we need to swap the values of x
                 else {
                     dx = x[i] - x[(i+1)%n];
                     dy = y[i] - y[(i+1)%n];
-                    if (dy == 0) {
-                    crossing++;
-                    continue;
-                    }
+                    if (dy == 0) return true;
                 }
                 // pendent
-                float m = dy/dx;
+                double m = dy/dx;
                 
                 // cout << " -> " << m << endl;
-                float n = y[i] - m*x[i];
+                double n = y[i] - m*x[i];
                 // cout << "n -> " << n << endl;
-                float rY = px*m + n;
+                double rY = px*m + n;
                 // cout << "rY -> " << rY << endl;
-                if (rY >= py) {
+                if (rY > py) {
                     crossing++;
                 }
+                else if (rY == py) return true;
             }
         }
     }
@@ -49,13 +50,13 @@ bool punto_en_poligono(float px, float py, float x[], float y[], int n) {
 
 int main() {
     int n; cin >> n;
-    float x[n], y[n];
+    double x[n], y[n];
     for (int i = 0; i < n; i++) {
         cin >> x[i] >> y[i];
     }
     int q; cin >> q;
     while (q--) {
-        float px, py; cin >> px >> py;
+        double px, py; cin >> px >> py;
         bool ans = punto_en_poligono(px, py, x, y, n);
         if (ans) cout << "DENTRO" << endl;
         else cout << "FUERA" << endl;
